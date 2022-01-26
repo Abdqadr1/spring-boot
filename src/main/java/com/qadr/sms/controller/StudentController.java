@@ -7,6 +7,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.qadr.sms.service.StudentService;
 
+/**
+ * This is the student controller class that handles request from clients
+ * It is annotated with @Controller, @RestController can also be used if we're building a restful service
+ * @RequestMapping("/students") is also used to tell the spring boot framework that this class will handle
+ * the request send to the "/students" path
+ * */
 @Controller
 @RequestMapping("/students")
 public class StudentController {
@@ -38,7 +44,6 @@ public class StudentController {
 	public String deleteStudent (@PathVariable Long id){
 		Student student = studentService.getStudentById(id);
 		studentService.deleteStudent(student);
-
 		return "redirect:/students";
 	}
 
@@ -51,7 +56,10 @@ public class StudentController {
 
 	// handler method for post all students
 	@PostMapping
-	public String createStudent(@ModelAttribute("student") Student student) {
+	public String createStudent(@ModelAttribute("student")
+											/** annotation used to tell that the data is coming from the
+											 * model view with the name "student" */
+											Student student) {
 		studentService.saveStudent(student);
 		return "redirect:/students";
 	}
@@ -66,7 +74,9 @@ public class StudentController {
 	}
 	// handler method for navigating to update user
 	@GetMapping("update/{id}")
-	public String updateStudentForm(@PathVariable("id") Long id, Model model){
+	public String updateStudentForm(@PathVariable("id")
+												/** annotation used to get the path var from the url*/ Long id,
+									Model model){
 		// find student
 		Student student = studentService.getStudentById(id);
 		model.addAttribute("student", student);

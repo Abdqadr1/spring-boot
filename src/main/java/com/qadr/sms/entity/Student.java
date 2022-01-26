@@ -7,13 +7,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Student class marked with @Entity to tell jpa that this is a table in the database
+ * */
 @Entity
-@Table(name="students")
+@Table(name="students") // set the name of the table in the database
 public class Student {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // set the generation type for the primary key
 	private Long id;
-	@Column(name = "first_name", nullable = false)
+	@Column(name = "first_name", nullable = false) // set the name of the column in the database and other rules
 	private String firstName;
 	
 	@Column(name = "last_name", nullable = false)

@@ -7,6 +7,10 @@ import org.springframework.stereotype.Service;
 import com.qadr.sms.repository.StudentRepository;
 import com.qadr.sms.service.StudentService;
 
+/**
+ *  This is the real service layer, and it is annotated with @Service
+ * Because our StudentService is an interface, we've to implement it
+ * */
 @Service
 public class StudentServiceImpl implements StudentService {
 	private StudentRepository studentRepository;

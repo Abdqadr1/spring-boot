@@ -32,6 +32,8 @@
 <div class="container">
     <div class="d-flex flex-column ">
         <h2 class="pt-3 pb-2">Students List</h2>
+<!--        th:href - set the href attribute of the tag  -->
+<!--        and "@{/students/new}" is the format of the url in thymeLeaf -->
         <a class="btn btn-primary mb-3 col-2" th:href="@{/students/new}">Add New Student</a>
     </div>
     <table class="table table-striped table-hover table-bordered">
@@ -44,6 +46,8 @@
         </tr>
         </thead>
         <tbody>
+<!--        students is a list of students sent by the controller handler method-->
+<!--        th:each is used to iterate the list and th:text set the textContent of the html tah td-->
             <tr th:each="student: ${students}">
                 <td th:text="${student.firstName}"></td>
                 <td th:text="${student.lastName}"></td>

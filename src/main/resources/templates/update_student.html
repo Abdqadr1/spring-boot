@@ -15,9 +15,12 @@
         <div class="col-6 justify-content-center card rounded">
             <h1 class="text-center">Create New Student</h1>
             <div class="card-body">
+<!--                "@{/students/{id}(id = ${student.id})}" - If the id property of the student object that was sent by the-->
+<!--                controller is 4 then the url becomes "@{/students/4}" - this is  a way to add variable to the url in thymeleaf-->
                 <form th:action="@{/students/{id}(id = ${student.id})}" method="POST" th:object="${student}">
                     <div class="input-group mb-3">
                         <label for="first_name">First Name: </label>
+<!--                        check create_students.html for the explanations-->
                         <input
                                 type="text" class="form-control p-2 rounded" placeholder="Enter student firstname"
                                 id="first_name" th:field="*{firstName}" name="firstName">

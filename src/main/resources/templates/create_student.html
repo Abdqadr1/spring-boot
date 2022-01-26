@@ -15,9 +15,13 @@
         <div class="col-6 justify-content-center card rounded">
             <h1 class="text-center">Create New Student</h1>
             <div class="card-body">
+<!--                th:action set the action attr of a form tag -->
+<!--                th:object is sent by the controller method to hold the form fields values-->
                 <form th:action="@{/students}" method="POST" th:object="${student}">
                     <div class="input-group mb-3">
                         <label for="first_name">First Name: </label>
+<!--                        th:field used to bind the value of the input element to the th:object properties-->
+<!--                        so whenever input value changes, the firstName property in the object gets updated-->
                         <input
                                 type="text" class="form-control p-2 rounded" placeholder="Enter student firstname"
                                 id="first_name" th:field="*{firstName}" name="firstName">
