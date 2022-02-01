@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * Extending jpaRepository gives us the built-in methods to communicate with the database
- * You can also write a custom method with queries here
+ * You can also write a custom methods with queries here
  * */
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
