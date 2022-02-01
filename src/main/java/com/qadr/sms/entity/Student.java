@@ -1,17 +1,16 @@
 package com.qadr.sms.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Student class marked with @Entity to tell jpa that this class maps to a table in the database
  * */
 @Entity
-@Table(name="students") // set the name of the table in the database
+@Table(
+		name="students",
+		uniqueConstraints = {
+				@UniqueConstraint(name = "email_unique", columnNames = "email") // for changing the name of the email uniqueness constraint
+		}) // set the name of the table in the database
 public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // set the generation type for the primary key
@@ -31,7 +30,7 @@ public class Student {
 	@Column(name = "last_name", nullable = false, columnDefinition = "TEXT")
 	private String lastName;
 	
-	@Column(name = "email", nullable = false, columnDefinition = "VARCHAR(255)", unique = true)
+	@Column(name = "email", nullable = false, columnDefinition = "VARCHAR(255)")
 	private String email;
 	
 	/**
